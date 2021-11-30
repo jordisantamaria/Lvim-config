@@ -401,3 +401,4 @@ vim.api.nvim_set_keymap('n', 'S', ":HopWord<cr>", {silent = true})
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
+
