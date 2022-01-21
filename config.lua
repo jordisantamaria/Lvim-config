@@ -11,13 +11,14 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "nvcode"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+lvim.database = {save_location = '~/.config/nvcode_db', auto_execute = 1}
 
 -- MY CONFIG
 vim.g.goyo_width=120
@@ -401,4 +402,3 @@ vim.api.nvim_set_keymap('n', 'S', ":HopWord<cr>", {silent = true})
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
-
