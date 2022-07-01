@@ -13,6 +13,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "nvcode"
 
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -46,7 +47,7 @@ vim.cmd([[
     " let g:workspace_autosave_ignore = ['TelescopePrompt', 'NvimTree', '無名', '[Command Line]', 'vim', 'ignored', 'qf']
     let g:nvim_tree_width = 45 "30 by default
     let g:nvim_tree_ignore = [ '.git', '.idea', '.cache', '.undodir' ] "empty by default
-    let g:workspace_autosave_files = ['python', 'typescript', 'yaml', 'yml', 'javascript', 'json', 'lua', 'vue', 'markdown', 'make', 'toml', 'sh', 'csv', 'zsh', 'conf', 'dockerfile', 'php']
+    let g:workspace_autosave_files = ['python', 'typescript', 'yaml', 'yml', 'javascript', 'json', 'lua', 'vue', 'markdown', 'make', 'toml', 'sh', 'csv', 'zsh', 'conf', 'dockerfile', 'php', 'typescriptreact']
     let g:workspace_only_git_dir = 1
 
     function! CleanupStuff()
@@ -102,15 +103,6 @@ vim.g.csv_nomap_l = 1
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["z"] = { "<cmd>TZAtaraxis<CR>", "Zen" }
-lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
-}
 lvim.builtin.which_key.mappings["v"] = { "<C-W>v", "Split Vertical" }
 lvim.builtin.which_key.mappings["h"] = { "<C-W>s", "Split Horizontal" }
 lvim.builtin.which_key.mappings["n"] = { "<cmd>nohlsearch<CR>", "No Highlight" }
@@ -176,10 +168,6 @@ lvim.builtin.which_key.mappings["q"] = {
         l = {":clast<CR>"        , "clast"},
         w = {":Rg<CR>"           , "find cursor word"},
         g = {":Glog %<CR>"       , "File git history"},
-        t = {":TroubleToggle<CR>"       , "TroubleToggle errors"},
-}
-
-lvim.builtin.which_key.mappings["m"] = {
         t = {":TroubleToggle<CR>"       , "TroubleToggle errors"},
 }
 
@@ -284,8 +272,8 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
-vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
+vim.cmd("nnoremap <silent> <C-p> <cmd>lua vim.diagnostic.goto_prev()<cr>")
+vim.cmd("nnoremap <silent> <C-n> <cmd>lua vim.diagnostic.goto_next()<cr>")
 -- generic LSP settings
 
 -- ---@usage disable automatic installation of servers
@@ -381,7 +369,6 @@ lvim.plugins = {
     {"kristijanhusak/vim-dadbod-ui"},
     {"kristijanhusak/vim-dadbod-completion"},
     {"jordisantamaria/vim-replace"},
-    {"metakirby5/codi.vim"},
     {"iamcco/markdown-preview.nvim"},
     {"numToStr/FTerm.nvim"},
     {"monaqa/dial.nvim"},
@@ -392,7 +379,10 @@ lvim.plugins = {
     {"simrat39/symbols-outline.nvim"},
     {"nvim-treesitter/playground"},
     {"kevinhwang91/nvim-bqf"}, -- better quickfix
-  }
+    {"glepnir/lspsaga.nvim"},
+    {"terrortylor/nvim-comment"},
+    {"jordisantamaria/nvim-snippets"},
+}
 
 require('hop').setup({create_hl_autocmd = true})
 
