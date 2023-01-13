@@ -40,14 +40,15 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-    let g:workspace_autosave_always = 1
+    let g:workspace_autosave_always = 0
+    let g:workspace_autosave = 0
     let g:workspace_autocreate = 1
     let g:workspace_session_directory = $HOME . '/.vim/sessions/'
     let g:workspace_undodir = $HOME . '/.vim/undo/'
     " let g:workspace_autosave_ignore = ['TelescopePrompt', 'NvimTree', '無名', '[Command Line]', 'vim', 'ignored', 'qf']
     let g:nvim_tree_width = 45 "30 by default
     let g:nvim_tree_ignore = [ '.git', '.idea', '.cache', '.undodir' ] "empty by default
-    let g:workspace_autosave_files = ['python', 'typescript', 'yaml', 'yml', 'javascript', 'json', 'lua', 'vue', 'markdown', 'make', 'toml', 'sh', 'csv', 'zsh', 'conf', 'dockerfile', 'php', 'typescriptreact']
+    let g:workspace_autosave_files = ['python', 'yaml', 'yml', 'json', 'lua', 'vue', 'markdown', 'make', 'toml', 'sh', 'csv', 'zsh', 'conf', 'dockerfile', 'php', 'typescriptreact']
     let g:workspace_only_git_dir = 1
 
     function! CleanupStuff()
@@ -313,15 +314,15 @@ vim.cmd("nnoremap <silent> <C-n> <cmd>lua vim.diagnostic.goto_next()<cr>")
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { exe = "black" },
---   {
---     exe = "prettier",
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
+ local formatters = require "lvim.lsp.null-ls.formatters"
+ formatters.setup {
+   { exe = "black" },
+   {
+     exe = "prettier",
+     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+     filetypes = { "typescript", "typescriptreact" },
+   },
+ }
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
@@ -382,6 +383,7 @@ lvim.plugins = {
     {"glepnir/lspsaga.nvim"},
     {"terrortylor/nvim-comment"},
     {"jordisantamaria/nvim-snippets"},
+    {"pantharshit00/vim-prisma"},
 }
 
 require('hop').setup({create_hl_autocmd = true})
