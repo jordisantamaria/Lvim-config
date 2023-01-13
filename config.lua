@@ -1,6 +1,5 @@
 --[[
 lvim is the global options object
-
 Linters should be
 filled in as strings with either
 a global executable or a path to
@@ -50,11 +49,9 @@ vim.cmd([[
     let g:nvim_tree_ignore = [ '.git', '.idea', '.cache', '.undodir' ] "empty by default
     let g:workspace_autosave_files = ['python', 'yaml', 'yml', 'json', 'lua', 'vue', 'markdown', 'make', 'toml', 'sh', 'csv', 'zsh', 'conf', 'dockerfile', 'php', 'typescriptreact']
     let g:workspace_only_git_dir = 1
-
     function! CleanupStuff()
         NvimTreeClose
     endfunction
-
     autocmd VimLeavePre * call CleanupStuff()
 ]])
 
@@ -249,10 +246,11 @@ vim.api.nvim_set_keymap('n', 'g.', '`^', {silent = true})
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
