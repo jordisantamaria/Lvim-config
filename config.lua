@@ -10,7 +10,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "nvcode"
+lvim.colorscheme = "lunarvim"
 
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -212,6 +212,9 @@ vim.cmd([[
   nnoremap <silent> <M-l>  :vertical resize +2<CR>
 ]])
 
+-- esc with jk
+vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true, silent = true})
+
 -- better indenting
 vim.api.nvim_set_keymap('v', '<', '<gv', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '>', '>gv', {noremap = true, silent = true})
@@ -373,7 +376,7 @@ lvim.plugins = {
     {"monaqa/dial.nvim"},
     {"nacro90/numb.nvim"},
     {"phaazon/hop.nvim"},
-    {"norcalli/nvim-colorizer.lua"},
+    {"NvChad/nvim-colorizer.lua"},
     {"windwp/nvim-spectre"},
     {"simrat39/symbols-outline.nvim"},
     {"nvim-treesitter/playground"},
@@ -385,6 +388,7 @@ lvim.plugins = {
 }
 
 require('hop').setup({create_hl_autocmd = true})
+require 'colorizer'.setup()
 
 vim.api.nvim_set_keymap('n', 's', ":HopChar2<cr>", {silent = true})
 vim.api.nvim_set_keymap('n', 'S', ":HopWord<cr>", {silent = true})
