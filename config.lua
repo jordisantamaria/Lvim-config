@@ -127,7 +127,7 @@ lvim.builtin.which_key.mappings["b"] = {
         ["7"] = {":BufferGoto 7<CR>", "Buffer 7"},
         ["8"] = {":BufferGoto 8<CR>", "Buffer 8"},
         ["9"] = {":BufferGoto 9<CR>", "Buffer 9"},
-        d = {":BufferClose<CR>", "delete-buffer"},
+        d = {":bd<CR>", "delete-buffer"},
         o = {":Bdelete hidden<CR>", "Delete all but current"},
         a = {":Bdelete all<CR>", "Delete all buffers"},
         h = {":TSBufToggle highlight<CR>", "Toogle treesitter highlight"},
@@ -385,10 +385,12 @@ lvim.plugins = {
     {"terrortylor/nvim-comment"},
     {"jordisantamaria/nvim-snippets"},
     {"pantharshit00/vim-prisma"},
+    {"windwp/nvim-ts-autotag"},
 }
 
 require('hop').setup({create_hl_autocmd = true})
 require 'colorizer'.setup()
+require('nvim-ts-autotag').setup()
 
 vim.api.nvim_set_keymap('n', 's', ":HopChar2<cr>", {silent = true})
 vim.api.nvim_set_keymap('n', 'S', ":HopWord<cr>", {silent = true})
