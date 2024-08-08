@@ -284,6 +284,7 @@ lvim.plugins = {
   { "jremmen/vim-ripgrep" }, -- :Rg command for quicklist
   { "junegunn/fzf" },
   { "dhruvasagar/vim-table-mode" },
+  { "airblade/vim-rooter"},
   -- {"tpope/vim-sleuth"},
   -- {"tpope/vim-dadbod"},
   --   {"kristijanhusak/vim-dadbod-ui"},
